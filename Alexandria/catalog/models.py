@@ -17,3 +17,11 @@ class Book(models.Model):
 
     def __str__(self):
         return f"Book(id={self.id}, title={self.title}, author_id={self.author.id})"
+
+    class Meta:
+        ordering = ['author__last_name', 'title']
+        verbose_name = "Book" # not necessary in this case because default is the model name and model + s
+        verbose_name_plural = "Books"
+        indexes = [
+            models.Index(fields=['title', 'author'])
+        ]
