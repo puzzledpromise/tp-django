@@ -6,6 +6,9 @@ class Author(models.Model):
     first_name = models.CharField(max_length=50, blank=True)
     birth_year = models.IntegerField()
 
+    def __str__(self):
+        return f"Author (id={self.id}, last_name={self.last_name})"
+
 class Book(models.Model):
     title = models.TextField()
     author = models.ForeignKey(Author, on_delete=models.CASCADE, blank=True, null=True)
